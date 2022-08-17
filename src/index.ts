@@ -24,6 +24,8 @@ export async function sendTransfer() {
 async function sendTransaction(kit: ContractKit, tx: any) {
   const address = (await kit.web3.eth.getAccounts())[0]
 
+  console.info(`Sending from ${address}`)
+
   const gas = await tx.estimateGas({ from: address })
   const txResult = await tx.send({
     from: address,
